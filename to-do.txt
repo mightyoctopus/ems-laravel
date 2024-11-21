@@ -16,3 +16,6 @@ To-Do List:
 
 5. On the submit form, the Phone field should be fixed 
 by removing the number increasing/decreasing buttons -- DONE
+
+
+6. Validation error messages on the Edit page as well!! 

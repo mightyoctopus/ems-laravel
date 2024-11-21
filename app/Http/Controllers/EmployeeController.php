@@ -6,27 +6,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employee;
+use App\Http\Requests\EmployeeRequest;
 
 class EmployeeController extends Controller
 {
     public function create() {
         return view('add_employee');
     }
-    public function store(Request $request) {
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
-            'phone' => 'required|string',
-            'email' => 'required|string',
-        ]);
 
-        Employee::create([
-            'first_name' => $validatedData['first_name'],
-            'last_name' => $validatedData['last_name'],
-            'phone' => $validatedData['phone'],
-            'email' => $validatedData['email'],
-        ]);
-
+    //Validation logic was pasted inside the rules of EmployeeRequest.php:
+    //Reference Source: https://www.youtube.com/watch?v=ddWAmMf5hEU 
+    public function store(EmployeeRequest $request) {
+        Employee::create($request->validated());
         return redirect()->route('home')->with('success', 'New Employee created successfully!');
     }
 
@@ -36,22 +27,11 @@ class EmployeeController extends Controller
         return view('edit_employee', compact('employee'));
     }
 
-    public function update(Request $request, $id) {
-        $validatedData = $request->validate([
-            'first_name' => 'required|string|max:100',
-            'last_name' => 'required|string|max:100',
-            'phone' => 'required|string',
-            'email' => 'required|string',
-        ]);
+    public function update(EmployeeRequest $request, $id) {
 
         $employee = Employee::findOrFail($id);
         
-        $employee->update([
-            'first_name' => $validatedData['first_name'],
-            'last_name' => $validatedData['last_name'],
-            'phone' => $validatedData['phone'],
-            'email' => $validatedData['email'],
-        ]);
+        $employee->update($request->validated());
 
         return redirect()->route('home')->with('success', 'Employee updated successfully!');
     }

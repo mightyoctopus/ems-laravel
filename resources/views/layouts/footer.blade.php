@@ -1,7 +1,7 @@
 </main>
 
 <footer>
-<footer>© Copyright 2024 Express EMS</footer>
+<footer>© Copyright 2024 Galaxy EMS</footer>
 </footer>
 
 </body>

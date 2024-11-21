@@ -7,22 +7,46 @@
 
 <!-- NOTE for myself:
 - csrf token tag inside the form must be included as how Laravel handles form submissions
-along with its built-in csrf token protection -->
+along with its built-in csrf token protection 
+
+- Error messages are run by the latest blade error directive
+Ref source: https://laravel-news.com/blade-error-directive 
+
+- {{ old('name_attribute')}} to keep the previously typed input value
+-->
+
+
 
 <div class="add-form-container">
     <form id="formId" action="{{ route('employees.store') }}" method="POST">
         @csrf 
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" name="first_name" required>
+        <label for="first_name">First Name</label>
+        <input type="text" id="fname" name="first_name" value="{{ old('first_name') }}" required>
         <br>
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" name="last_name" required>
+        @error('first_name')
+            <span style="color:red; font-weight:bold">{{ $message }}</span>
+        @enderror
+        <br>
+        <label for="last_name">Last Name</label>
+        <input type="text" id="lname" name="last_name" value="{{ old('last_name') }}" required>
+        <br>
+        @error('last_name')
+            <span style="color:red; font-weight:bold">{{ $message }}</span>
+        @enderror
         <br>
         <label for="phone">Phone</label>
-        <input type="text" id="phone" name="phone" required>
+        <input type="text" id="phone" name="phone" value="{{ old('phone') }}" required>
+        <br>
+        @error('phone')
+            <span style="color:red; font-weight:bold">{{ $message }}</span>
+        @enderror
         <br>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="email" name="email" value="{{ old('email') }}" required>
+        <br>
+        @error('email')
+            <span style="color:red; font-weight:bold">{{ $message }}</span>
+        @enderror
     </form>
 
     <button type="button" id="submitBtn">Add</button>

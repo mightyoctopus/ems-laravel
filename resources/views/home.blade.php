@@ -38,6 +38,7 @@
                     <td>{{ $employee->created_at }}</td>
                     <td>{{ $employee->updated_at }}</td>
                     <td>
+                        <button class="actions-btn btn-details"><a href="{{ route('employee_details.index')}}">Details</a></button>
                         <!-- NOTE for myself: 
                         Mistake made -- didn't put the id parameter $employee->id in the button attribute -->
                         <button class="actions-btn btn-edit"><a href="{{ route('employees.edit', $employee->id)}}">Edit</a></button>

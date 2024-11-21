@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeeDetailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,6 @@ Route::get('/employees/{id}/edit', [EmployeeController::class, 'edit'])->name('e
 Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employees.update');
 
 Route::delete('/employees/{id}', [EmployeeController::class, 'delete'])->name('employees.delete');
+
+Route::get('/employee-details', [EmployeeDetailController::class, 'index'])->name('employee_details.index');
+
