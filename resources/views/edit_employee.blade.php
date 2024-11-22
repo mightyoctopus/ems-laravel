@@ -54,7 +54,7 @@
             <h2>Details</h2>
 
             <label for="height">Height</label>
-            <input type="text" id="height" name="height" value="{{ old('height', optional($employee->details)->height) }}" required>
+            <input type="text" id="height" name="height" value="{{ old('height', optional($employee->details)->height) }}">
             <br>
             @error('height')
                 <span style="color:red; font-weight:bold">{{ $message }}</span>
@@ -62,7 +62,7 @@
             <br>
 
             <label for="weight">Weight</label>
-            <input type="text" id="weight" name="weight" value="{{ old('weight', optional($employee->details)->weight) }}" required>
+            <input type="text" id="weight" name="weight" value="{{ old('weight', optional($employee->details)->weight) }}">
             <br>
             @error('weight')
                 <span style="color:red; font-weight:bold">{{ $message }}</span>
@@ -70,7 +70,7 @@
             <br>
 
             <label for="age">Age</label>
-            <input type="text" id="age" name="age" value="{{ old('age', optional($employee->details)->age) }}" required>
+            <input type="text" id="age" name="age" value="{{ old('age', optional($employee->details)->age) }}">
             <br>
             @error('age')
                 <span style="color:red; font-weight:bold">{{ $message }}</span>
@@ -78,7 +78,7 @@
             <br>
 
             <label for="blood_type">Blood Type</label>
-            <input type="text" id="blood_type" name="blood_type" value="{{ old('blood_type', optional($employee->details)->blood_type) }}" required>
+            <input type="text" id="blood_type" name="blood_type" value="{{ old('blood_type', optional($employee->details)->blood_type) }}">
             <br>
             @error('blood_type')
                 <span style="color:red; font-weight:bold">{{ $message }}</span>
@@ -102,12 +102,10 @@
 
 </div>
 
-
 <script>
     document.getElementById('employee-info-submit-btn').addEventListener('click', () => {
         const form = document.getElementById('employee-submit-form');
-        // console.log(form);
-
+        console.log(form);
         if (form) {
             form.submit();
         } else {

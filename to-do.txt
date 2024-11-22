@@ -36,4 +36,10 @@ DONE
 
 3. Remove the Details info creation form in the Add Form -- DONE
 
-4. enum blood type error on the edit form
+4. enum blood type error on the edit form -- DONE 
+(settled by normalizing the enum input value -- with trim and case insenstivity)
+
+5. Submit error on the Edit page -- DONE
+settled by removing required on blade view HTML and the custom Request(EmployeeDetailUpdateRequest.php)
+
+The main reason removing required resolved the issue is that it made the fields optional. Validation no longer failed for missing fields, allowing the form submission to succeed. If you need those fields to be optional but still want validation when they are present, you can safely rely on rules like numeric, min:0, and Rule::in(...) without applying required.

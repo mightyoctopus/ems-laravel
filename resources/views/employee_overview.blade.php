@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="page-title-container">
-        <h1>Employee Details</h1>
+        <h1>Employee Overview</h1>
     </div>
 
     <div class="basic-info-container">
@@ -12,10 +12,10 @@
         </div>    
         
         <div class="basic-info-content">
-            <p>First Name:</p>
-            <p>Last Name:</p>
-            <p>Phone:</p>
-            <p>Email:</p>
+            <p>First Name: {{ $employee->first_name }}</p>
+            <p>Last Name: {{ $employee->last_name }}</p>
+            <p>Phone: {{ $employee->phone }}</p>
+            <p>Email: {{ $employee->email }}</p>
         </div>
         
     </div>
@@ -26,12 +26,12 @@
         </div>    
         
         <div class="details-info-content">
-            <p>Employee ID:</p>
-            <p>Height:</p>
-            <p>Weight:</p>
-            <p>Age:</p>
-            <p>Blood Type:</p>
+            <p>Height: {{ $employee->details->height ?? 'N/A' }}</p>
+            <p>Weight: {{ $employee->details->weight ?? 'N/A' }}</p>
+            <p>Age: {{ $employee->details->age ?? 'N/A' }}</p>
+            <p>Blood Type: {{ $employee->details->blood_type ?? 'N/A' }}</p>
         </div>
     </div>
+ 
 
 @endsection

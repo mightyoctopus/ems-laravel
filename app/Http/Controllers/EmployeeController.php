@@ -35,7 +35,7 @@ class EmployeeController extends Controller
         $employee->update($basicRequest->validated());
 
         $detailsData = $detailRequest->validated();
-
+    
         // Create details data if not reviously created. Once details data has been filled in, it can be edtiable in the same form. 
         if ($employee->details) {
             $employee->details->update($detailsData);
@@ -43,12 +43,19 @@ class EmployeeController extends Controller
             $employee->details()->create($detailsData);
         }
 
-        return redirect()->route('employees.edit')->with('success', 'Employee updated successfully!');
+        return redirect()->route('home')->with('success', 'Employee updated successfully!');
     }
 
     public function delete($id) {
         $employee = Employee::findOrFail($id);
         $employee->delete();
         return redirect()->route('home')->with('success', 'Employee deleted successfully!');
+    }
+
+    // Employee Overview Page
+    public function show($id) 
+    {
+        $employee = Employee::with('details')->findOrFail($id);
+        return view('employee_overview', compact('employee'));
     }
 }

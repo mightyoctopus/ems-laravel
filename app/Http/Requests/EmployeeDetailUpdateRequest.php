@@ -27,10 +27,10 @@ class EmployeeDetailUpdateRequest extends FormRequest
     {
         // dd(BloodTypeEnum::getBloodTypes());
         return [
-            'employee_id' => 'required|exists:employee,id',
-            'height' => 'required|numeric|min:0',
-            'weight' => 'required|numeric|min:0',
-            'age' => 'required|integer|min:0',
+            'employee_id' => 'exists:employee,id',
+            'height' => 'numeric|min:0',
+            'weight' => 'numeric|min:0',
+            'age' => 'integer|min:0',
             'blood_type' => [
                 'required',
                 Rule::in(BloodTypeEnum::getBloodTypes()),

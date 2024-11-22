@@ -37,5 +37,5 @@ Route::delete('/employees/{id}', [EmployeeController::class, 'delete'])->name('e
 
 
 // Employee Overview Route -- {id} should be added later at development stage of this page
-Route::get('/employee-overview', [EmployeeDetailController::class, 'index'])->name('employee_overview.index');
+Route::get('/employee-overview/{id}', [EmployeeController::class, 'show'])->name('employee_overview.show');
 
