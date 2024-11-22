@@ -17,8 +17,11 @@ Ref source: https://laravel-news.com/blade-error-directive
 
 
 
-<div class="add-form-container">
-    <form id="formId" action="{{ route('employees.store') }}" method="POST">
+<div class="add-basic-profile-container">
+    <div>
+        <h2>Basic Profile</h2>
+    </div>
+    <form id="basic-profile-form" action="{{ route('basic_profile.store') }}" method="POST">
         @csrf 
         <label for="first_name">First Name</label>
         <input type="text" id="fname" name="first_name" value="{{ old('first_name') }}" required>
@@ -47,9 +50,11 @@ Ref source: https://laravel-news.com/blade-error-directive
         @error('email')
             <span style="color:red; font-weight:bold">{{ $message }}</span>
         @enderror
+
+        <button type="button" id="profile-submitBtn">Add</button>
     </form>
 
-    <button type="button" id="submitBtn">Add</button>
+    
 
     <!-- 
     Show-Success message referred by the following resource: 
@@ -65,12 +70,25 @@ Ref source: https://laravel-news.com/blade-error-directive
     Next time, make sure to learn how to implement the error message using try/catch and exception in Laravel -->
 </div>
 
+
 <script>
-    document.getElementById('submitBtn').addEventListener('click', () => {
-        const form = document.getElementById('formId');
-        console.log(form);
-        form.submit();
+    document.getElementById('profile-submitBtn').addEventListener('click', () => {
+        const form = document.getElementById('basic-profile-form');
+        if (form) {
+            form.submit();
+        } else {
+            console.error("Basic profile form not found!");
+        }
     });
+
+    document.getElementById('details-submitBtn').addEventListener('click', () => {
+        const form = document.getElementById('details-form');
+        if (form) {
+            form.submit();
+        } else {
+            console.error("Details fomr not found!");
+        }
+    })
 </script>
 
 @endsection

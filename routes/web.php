@@ -18,18 +18,24 @@ use App\Http\Controllers\EmployeeDetailController;
 
 // Reference from https://www.digitalocean.com/community/tutorials/simple-laravel-crud-with-resource-controllers 
 
-
+// Homepage Route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+
+// Create employee info
 Route::get('/add-employee', [EmployeeController::class, 'create'])->name('employees.create');
+Route::post('/add-basic-profile', [EmployeeController::class, 'store'])->name('basic_profile.store');
 
-Route::post('/add-employee', [EmployeeController::class, 'store'])->name('employees.store');
 
+// Edit employee info
 Route::get('/employees/{id}/edit', [EmployeeController::class, 'edit'])->name('employees.edit');
+Route::put('/employees/{id}/edit/update-details', [EmployeeController::class, 'update'])->name('employee.update');
 
-Route::put('/employees/{id}', [EmployeeController::class, 'update'])->name('employees.update');
 
+// Delete employee
 Route::delete('/employees/{id}', [EmployeeController::class, 'delete'])->name('employees.delete');
 
-Route::get('/employee-details', [EmployeeDetailController::class, 'index'])->name('employee_details.index');
+
+// Employee Overview Route -- {id} should be added later at development stage of this page
+Route::get('/employee-overview', [EmployeeDetailController::class, 'index'])->name('employee_overview.index');
 

@@ -15,4 +15,12 @@ class Employee extends Model
         'phone',
         'email',
     ];
+
+    // Relational structure with the EmployeeDetail table -- bind it to EmployeeDetail
+    // one-to-one relationship using hasOne()
+    public function details()
+    {
+        return $this->hasOne(EmployeeDetail::class);
+    }
 }
+

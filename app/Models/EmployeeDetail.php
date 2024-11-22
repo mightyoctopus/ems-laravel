@@ -16,4 +16,10 @@ class EmployeeDetail extends Model
         'age',
         'blood_type',
     ];
+
+       // Relational structure with the Employee table -- bind it to Employee using belongTo()
+    public function employee()
+    {
+        return $this->belongsTo(Employee::class);
+    }
 }

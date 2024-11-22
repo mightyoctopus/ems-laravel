@@ -3,9 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use App\Enums\BloodTypeEnum;
 
-class EmployeeDetailRequest extends FormRequest
+class EmployeeDetailUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +15,7 @@ class EmployeeDetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,12 +25,27 @@ class EmployeeDetailRequest extends FormRequest
      */
     public function rules()
     {
+        // dd(BloodTypeEnum::getBloodTypes());
         return [
             'employee_id' => 'required|exists:employee,id',
             'height' => 'required|numeric|min:0',
             'weight' => 'required|numeric|min:0',
             'age' => 'required|integer|min:0',
-            'blood_type' => 'required|in: '.implode(',', BloodTypeEnum::getBloodTypes()),
+            'blood_type' => [
+                'required',
+                Rule::in(BloodTypeEnum::getBloodTypes()),
+            ],
         ];
+    }
+
+    //Trim and switch the value to Uppercase so that it eventually becomes case insensitive
+    // Fixed method name in Laravel as prepareForValidation()
+    protected function prepareForValidation() 
+    {
+        $this->merge([
+            'blood_type' => trim(strtoupper($this->blood_type)),
+        ]);
+
+        // dd($this->all());
     }
 }

@@ -18,4 +18,22 @@ To-Do List:
 by removing the number increasing/decreasing buttons -- DONE
 
 
-6. Validation error messages on the Edit page as well!! 
+6. Validation error messages on the Edit page as well!! -- DONE
+
+
+
+
+
+Relational Database Integration:
+
+1. Re-touch the UPDATE Controller to handle both edit the basic profile and 
+
+ - details info: create and edit 
+DONE
+
+2. Re-touch web.php -- DONE
+
+
+3. Remove the Details info creation form in the Add Form -- DONE
+
+4. enum blood type error on the edit form

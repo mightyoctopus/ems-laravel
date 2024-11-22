@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class EmployeeRequest extends FormRequest
+class EmployeeStoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,12 +15,6 @@ class EmployeeRequest extends FormRequest
     {
         return true;
     }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
       
 
      //Validation logic is pasted inside rules:
