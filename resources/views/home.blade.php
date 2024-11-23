@@ -54,6 +54,16 @@
             </tbody>
         </table>
 
+        <!-- 
+        ref: 
+        https://laravel.com/docs/11.x/pagination 
+        https://bagisto.com/en/how-to-use-pagination-in-laravel/
+        https://stackoverflow.com/questions/64002774/laravel-pagination-is-showing-weird-arrows
+         -->
+        <div class="pagination">
+            {!! $employees->links('pagination::bootstrap-4') !!}
+        </div>
+
     </div>
     
 @endsection
