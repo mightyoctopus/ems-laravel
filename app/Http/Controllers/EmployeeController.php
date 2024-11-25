@@ -36,7 +36,7 @@ class EmployeeController extends Controller
 
         $detailsData = $detailRequest->validated();
     
-        // Create details data if not reviously created. Once details data has been filled in, it can be edtiable in the same form. 
+        // Create details data if not previously created. Once details data has been filled in, it can be edtiable in the same form. 
         if ($employee->details) {
             $employee->details->update($detailsData);
         } else {
